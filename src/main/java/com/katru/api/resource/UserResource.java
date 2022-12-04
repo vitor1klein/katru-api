@@ -1,4 +1,4 @@
-package com.katru.api.resources;
+package com.katru.api.resource;
 
 import java.util.Map;
 
