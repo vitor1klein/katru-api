@@ -1,11 +1,21 @@
 package com.katru.api.service;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import com.katru.api.entity.User;
+import com.katru.api.repository.UserRepository;
 
-public interface UserService {
+@Service
+public class UserService {
     
-    User validateUser(String email, String password) throws Exception;
+    @Autowired
+    private UserRepository userRepository;
 
-    User registerUser(String firstName, String lastName, String email, String password) throws Exception;
+    public List<User> list(){
+        return userRepository.findAll();
+    }
 
 }

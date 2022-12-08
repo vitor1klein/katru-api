@@ -14,6 +14,8 @@ import lombok.*;
 
 @Data
 @Entity
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_user")
 public class User {
 
@@ -23,11 +25,14 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_usuario")
     private Long id;
 
-    @Column(name = "user_cpf", length = 11, nullable = false)
+    @Column(name = "cpf_user", length = 11, nullable = false)
     private String userCPF;
 
-    @Column(name = "user_name", length = 60, nullable = false)
-    private String userName;
+    @Column(name = "first_name", length = 60, nullable = false)
+    private String firstName;
+
+    @Column(name = "last_name", length = 60, nullable = false)
+    private String lastName;
 
     @Column(name = "email", length = 50, nullable = false)
     private String email;
@@ -35,7 +40,7 @@ public class User {
     @Column(name = "phone_number")
     private String phoneNumber;
 
-    @Column(name = "active")
+    @Column(name = "active", nullable = false)
     private Boolean active;
 
     @Column(name = "dt_creation", nullable = false)

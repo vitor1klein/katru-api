@@ -47,8 +47,9 @@ CREATE SEQUENCE public.sq_report
 CREATE TABLE public.tb_user (
 	id_user BIGINT NOT NULL DEFAULT nextval('public.sq_user'::regclass),
 	cpf_user VARCHAR(11) NOT NULL,
-	name_user VARCHAR(150) NOT NULL,
-	email VARCHAR(100) NULL,
+	first_name VARCHAR(60) NOT NULL,
+	last_name VARCHAR(60) NOT NULL,
+	email VARCHAR(100) NOT NULL,
 	phone_number VARCHAR(15) NULL,
 	active BOOL NOT NULL,
 	dt_creation TIMESTAMP NOT NULL,

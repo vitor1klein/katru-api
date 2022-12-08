@@ -1,14 +1,11 @@
 package com.katru.api.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
 import com.katru.api.entity.User;
 
-public interface UserRepository {
+@Repository
+public interface UserRepository extends JpaRepository<User, Long>{
 
-    Integer create(String firstName, String lastName, String email, String password) throws Exception;
-
-    User findByEmailandPassword(String email, String password) throws Exception;
-    
-    Integer getCountByEmail (String email);
-
-    User findById(Integer userId); 
 }
