@@ -10,13 +10,11 @@ import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
-import lombok.*;
+import lombok.Data;
 
 @Data
-@Entity
-@AllArgsConstructor
-@NoArgsConstructor
 @Table(name = "tb_user")
+@Entity
 public class User {
 
     @Id
@@ -47,6 +45,6 @@ public class User {
     private LocalDateTime dtCreation;
 
     @Column(name = "dt_update")
-    private LocalDateTime dtUpdate;
+    private LocalDateTime dtUpdate;   
   
 }
