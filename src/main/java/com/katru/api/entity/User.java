@@ -9,9 +9,13 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_user")
 @Entity
 public class User {
@@ -25,11 +29,8 @@ public class User {
     @Column(name = "cpf_user", length = 11, nullable = false)
     private String userCPF;
 
-    @Column(name = "first_name", length = 60, nullable = false)
-    private String firstName;
-
-    @Column(name = "last_name", length = 60, nullable = false)
-    private String lastName;
+    @Column(name = "name_user", length = 60, nullable = false)
+    private String userName;
 
     @Column(name = "email", length = 50, nullable = false)
     private String email;
