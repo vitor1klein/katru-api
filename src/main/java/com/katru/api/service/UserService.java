@@ -1,5 +1,9 @@
 package com.katru.api.service;
 
+import java.util.List;
+
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.katru.api.entity.User;
@@ -15,9 +19,13 @@ public class UserService {
         this.userRepository = userRepository;
     }
 
-
     public User findById (Long idUser){
         return userRepository.findById(idUser).orElseThrow(() -> new MyFirstException(idUser));
+    }
+
+    public List<User> findAllPaginated(int page, int size) {
+        Pageable pageConfig = PageRequest.of(page, size);
+        return userRepository.findAllPaginated(pageConfig);
     }
 
     
