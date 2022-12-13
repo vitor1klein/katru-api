@@ -2,21 +2,22 @@ package com.katru.api.entity;
 
 import java.time.LocalDateTime;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.SequenceGenerator;
-import javax.persistence.Table;
-
-import lombok.*;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.SequenceGenerator;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name = "tb_user")
+@Entity
 public class User {
 
     @Id
@@ -28,11 +29,8 @@ public class User {
     @Column(name = "cpf_user", length = 11, nullable = false)
     private String userCPF;
 
-    @Column(name = "first_name", length = 60, nullable = false)
-    private String firstName;
-
-    @Column(name = "last_name", length = 60, nullable = false)
-    private String lastName;
+    @Column(name = "name_user", length = 60, nullable = false)
+    private String userName;
 
     @Column(name = "email", length = 50, nullable = false)
     private String email;
@@ -48,5 +46,30 @@ public class User {
 
     @Column(name = "dt_update")
     private LocalDateTime dtUpdate;
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        User other = (User) obj;
+        if (id == null) {
+            if (other.id != null)
+                return false;
+        } else if (!id.equals(other.id))
+            return false;
+        return true;
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + ((id == null) ? 0 : id.hashCode());
+        return result;
+    }   
   
 }

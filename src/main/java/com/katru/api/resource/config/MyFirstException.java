@@ -1,10 +1,29 @@
 package com.katru.api.resource.config;
 
-public class MyFirstException extends Exception {
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
-    public MyFirstException(String arg0) {
-        super(arg0);
+@ResponseStatus(HttpStatus.NOT_FOUND)
+public class MyFirstException extends RuntimeException {
+
+    private Long idUser;
+
+    public MyFirstException(Long idUser){
+        this.idUser = idUser;
     }
+
+    public MyFirstException(String arg0, Throwable arg1, Long idUser) {
+        super(arg0, arg1);
+        this.idUser = idUser;
+    }
+
+    public Long getIdUser() {
+        return idUser;
+    }
+
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
+    }    
 
 }
 
