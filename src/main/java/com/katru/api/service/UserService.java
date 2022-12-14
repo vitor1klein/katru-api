@@ -1,9 +1,8 @@
 package com.katru.api.service;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import com.katru.api.entity.User;
@@ -23,9 +22,10 @@ public class UserService {
         return userRepository.findById(idUser).orElseThrow(() -> new MyFirstException(idUser));
     }
 
-    public List<User> findAllPaginated(int page, int size) {
-        Pageable pageConfig = PageRequest.of(page, size);
-        return userRepository.findAllPaginated(pageConfig);
+    public Page<User> findAllPaginated(int page, int size) {
+        Sort sort = Sort.by("id").descending();
+        PageRequest pr = PageRequest.of(page,size);
+        return userRepository.findAll(pr);
     }
 
     
@@ -34,4 +34,4 @@ public class UserService {
 
 
 
-// TODO: when you are going to create a web server, check the video from Dan Vega about the sprint in minute 39
+

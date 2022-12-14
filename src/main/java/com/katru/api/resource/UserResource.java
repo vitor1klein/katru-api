@@ -7,8 +7,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.katru.api.entity.User;
 import com.katru.api.service.UserService;
 
-import java.util.List;
-
+import org.springframework.data.domain.Page;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -29,8 +28,8 @@ public class UserResource {
     }
 
     @GetMapping(params = {"page", "size"})
-    public List<User> list(@RequestParam("page") int page, @RequestParam("size") int size) {
+    public Page<User> list(@RequestParam("page") int page, @RequestParam("size") int size) {
         return userService.findAllPaginated(page, size);
     }
-    
+
 }

@@ -15,6 +15,7 @@ This project is intended to be a REST backend API for an application that expose
 - VsCode
 ## Functionalities implemented
 - `Database Integration`: the application uses a PostgreSQL database
+- `Server configuration`: a docker java image and postgres image has been used.
 - `User authentication`: users can authenticate and have different access inside the application
 - `Custom Exceptions`: custom exception are handled in the application, using the newest features from Spring Boot 3
 ## Challenges
@@ -24,5 +25,11 @@ This project is intended to be a REST backend API for an application that expose
 ## Next steps
 - I will update this field with future functionalities.
 - Next: Paging and sorting 
+- Notifications
+- Scalability
+- etc
 ## About the author
 Vitor Klein is a software enthusiast which loves to learn new tools and technologies. He has worked in companies as a Data Engineer, building data warehouses from scratch, making data understandable and valuable for stakeholders, and acting in every step of the ETL process. Meanwhile, he has developed some backend projects using Java (Quarkus).
+
+
+// TODO: when you are going to create a web server, check the video from Dan Vega about the sprint in minute 39
