@@ -8,6 +8,7 @@ import com.katru.api.entity.User;
 import com.katru.api.service.UserService;
 
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Slice;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
@@ -28,8 +29,20 @@ public class UserResource {
     }
 
     @GetMapping(params = {"page", "size"})
-    public Page<User> list(@RequestParam("page") int page, @RequestParam("size") int size) {
+    public Page<User> list(
+        @RequestParam("page") int page, 
+        @RequestParam("size") int size
+    ) {
         return userService.findAllPaginated(page, size);
+    }
+
+    @GetMapping(path = "/byName", params = {"page","size","userName"})
+    public Slice<User> listByFirstName(
+        @RequestParam("page") int page,
+        @RequestParam("size") int size,
+        @RequestParam("userName") String userName
+    ) {
+        return userService.findByFirstName(userName, page, size);
     }
 
 }

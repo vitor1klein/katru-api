@@ -2,6 +2,7 @@ package com.katru.api.service;
 
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -26,9 +27,12 @@ public class UserService {
         Sort sort = Sort.by("id").descending();
         PageRequest pr = PageRequest.of(page,size);
         return userRepository.findAll(pr);
-    }
+    }    
 
-    
+    public Slice<User> findByFirstName(String userName, int page, int size){
+        PageRequest pr = PageRequest.of(page, size);
+        return userRepository.findByUserName(userName, pr);
+    }
 
 }
 
