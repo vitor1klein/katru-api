@@ -33,3 +33,9 @@ Vitor Klein is a software enthusiast which loves to learn new tools and technolo
 
 
 // TODO: when you are going to create a web server, check the video from Dan Vega about the sprint in minute 39
+
+
+## Code to generate keys
+openssl genrsa -out keypair.pem 2048
+openssl rsa -in keypair.pem -pubout -out public.pem
+openssl pkcs8 -topk8 -inform PEM -outform PEM -nocrypt -in keypair.pem -out private.pem
