@@ -6,10 +6,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
-import com.katru.api.config.RsaKeyProperties;
-
-
-@EnableConfigurationProperties(RsaKeyProperties.class)
 @SpringBootApplication
 public class KatruApiApplication {
 
