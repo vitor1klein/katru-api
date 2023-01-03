@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.katru.api.entity.User;
 import com.katru.api.repository.UserRepository;
 import com.katru.api.resource.config.MyFirstException;
+import com.katru.api.resource.request.CreateUserRequest;
 
 @Service
 public class UserService {
@@ -29,9 +30,17 @@ public class UserService {
         return userRepository.findAll(pr);
     }    
 
-    public Slice<User> findByFirstName(String userName, int page, int size){
+    public Slice<User> findByFirstName(String name, int page, int size){
         PageRequest pr = PageRequest.of(page, size);
-        return userRepository.findByUserName(userName, pr);
+        return userRepository.findByName(name, pr);
+    }
+
+    public void createUser (CreateUserRequest createUserRequest) {
+        User user = new User(createUserRequest.cpf(),createUserRequest.email(),createUserRequest.name(),createUserRequest.password());
+
+        // TODO: check if user can be created. Already exists? Has any invalid value?
+        userRepository.save(user);
+
     }
 
 }

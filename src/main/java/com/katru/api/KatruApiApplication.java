@@ -2,9 +2,7 @@ package com.katru.api;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.boot.context.properties.EnableConfigurationProperties;
-import org.springframework.context.annotation.Bean;
-import org.springframework.web.client.RestTemplate;
+
 
 @SpringBootApplication
 public class KatruApiApplication {
@@ -13,9 +11,20 @@ public class KatruApiApplication {
 		SpringApplication.run(KatruApiApplication.class, args);
 	}
 
-	@Bean
-	RestTemplate restTemplate(){
-		return new RestTemplate();
-	}
+	// @Bean
+	// CommandLineRunner commandLineRunner(UserRepository users, PasswordEncoder encoder) {
+	// 	return args -> {
+	// 		users.save(new User(
+	// 			1, "user",
+	// 			encoder.encode("password"),
+	// 			"ROLE_USER", null, null, null, null, null, null, null
+	// 			));
+	// 		users.save(new User(
+	// 			2, "admin",
+	// 			encoder.encode("password"),
+	// 			"ROLE_USER,ROLE_ADMIN", null, null, null, null, null, null, null
+	// 		));
+	// 	};
+	// }
 
 }

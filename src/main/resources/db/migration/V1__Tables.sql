@@ -46,18 +46,20 @@ CREATE SEQUENCE public.sq_report
 -- DROP TABLE public.tb_user;
 CREATE TABLE public.tb_user (
 	id_user BIGINT NOT NULL DEFAULT nextval('public.sq_user'::regclass),
-	cpf_user VARCHAR(11) NOT NULL,
-	first_name VARCHAR(60) NOT NULL,
-	last_name VARCHAR(60) NOT NULL,
+	cpf VARCHAR(11) NOT NULL,
+	name VARCHAR(150) NOT NULL,
 	email VARCHAR(100) NOT NULL,
 	phone_number VARCHAR(15) NULL,
 	active BOOL NOT NULL,
+	user_name VARCHAR(150) NOT NULL,
+	password VARCHAR(150) NOT NULL,
+	roles VARCHAR(150) NOT NULL,
 	dt_creation TIMESTAMP NOT NULL,
 	dt_update TIMESTAMP,
 	CONSTRAINT pk_user PRIMARY KEY (id_user)
 );
 
-CREATE UNIQUE INDEX tb_user_cpf_user ON public.tb_user (cpf_user);
+CREATE UNIQUE INDEX tb_user_cpf ON public.tb_user (cpf);
 
 -- ---------------------------------------
 -- ---------------PROJECT-----------------

@@ -26,11 +26,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_usuario")
     private Long id;
 
-    @Column(name = "cpf_user", length = 11, nullable = false)
-    private String userCPF;
+    @Column(name = "cpf", length = 11, nullable = false)
+    private String cpf;
 
-    @Column(name = "name_user", length = 60, nullable = false)
-    private String userName;
+    @Column(name = "name", length = 60, nullable = false)
+    private String name;
 
     @Column(name = "email", length = 50, nullable = false)
     private String email;
@@ -40,6 +40,15 @@ public class User {
 
     @Column(name = "active", nullable = false)
     private Boolean active;
+
+    @Column(name = "user_name", nullable = false)
+    private String userName;
+
+    @Column(name = "password", nullable = false)
+    private String password;
+
+    @Column(name = "roles", nullable = false)
+    private String roles;
 
     @Column(name = "dt_creation", nullable = false)
     private LocalDateTime dtCreation;
