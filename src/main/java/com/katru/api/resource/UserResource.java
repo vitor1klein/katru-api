@@ -8,13 +8,10 @@ import com.katru.api.entity.User;
 import com.katru.api.resource.request.RegisterUserRequest;
 import com.katru.api.service.UserService;
 
-import jakarta.annotation.security.PermitAll;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Slice;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -36,6 +33,11 @@ public class UserResource {
     @GetMapping("/{idUser}")
     public User findById(@PathVariable Long idUser){
         return userService.findById(idUser);
+    }
+
+    @GetMapping()
+    public User findByEmail(@RequestParam("email") String email){
+        return userService.findByEmail(email);
     }
 
     @GetMapping(params = {"page", "size"})

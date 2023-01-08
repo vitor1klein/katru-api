@@ -11,20 +11,4 @@ public class KatruApiApplication {
 		SpringApplication.run(KatruApiApplication.class, args);
 	}
 
-	// @Bean
-	// CommandLineRunner commandLineRunner(UserRepository users, PasswordEncoder encoder) {
-	// 	return args -> {
-	// 		users.save(new User(
-	// 			1, "user",
-	// 			encoder.encode("password"),
-	// 			"ROLE_USER", null, null, null, null, null, null, null
-	// 			));
-	// 		users.save(new User(
-	// 			2, "admin",
-	// 			encoder.encode("password"),
-	// 			"ROLE_USER,ROLE_ADMIN", null, null, null, null, null, null, null
-	// 		));
-	// 	};
-	// }
-
 }

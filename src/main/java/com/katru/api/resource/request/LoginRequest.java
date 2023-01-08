@@ -1,5 +1,5 @@
 package com.katru.api.resource.request;
 
-public record LoginRequest(String userName, String password) {
+public record LoginRequest(String email, String password) {
     
 }
