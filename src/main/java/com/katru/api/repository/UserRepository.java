@@ -9,7 +9,6 @@ import org.springframework.data.repository.ListCrudRepository;
 
 import com.katru.api.entity.User;
 
-// PagingAndSortingRepository<User, Long> , 
 public interface UserRepository extends ListCrudRepository<User, Long>{
 
     Page<User> findAll(Pageable pageable);
@@ -17,4 +16,7 @@ public interface UserRepository extends ListCrudRepository<User, Long>{
     Slice<User> findByName(String name, Pageable pageable);
 
     Optional<User> findByuserName(String userName);
+
+    Optional<User> findByEmail(String email);
+    
 }

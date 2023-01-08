@@ -10,12 +10,14 @@ import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@Builder
 @Table(name = "tb_user")
 @Entity
 public class User {
@@ -23,7 +25,7 @@ public class User {
     @Id
     @Column(name = "id_user")
     @SequenceGenerator(name = "sq_user", sequenceName = "sq_user", allocationSize = 1)
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_usuario")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sq_user")
     private Long id;
 
     @Column(name = "cpf", length = 11, nullable = false)

@@ -1,23 +1,28 @@
 package com.katru.api.service;
 
+import java.time.LocalDateTime;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Slice;
 import org.springframework.data.domain.Sort;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.katru.api.entity.User;
 import com.katru.api.repository.UserRepository;
 import com.katru.api.resource.config.MyFirstException;
-import com.katru.api.resource.request.CreateUserRequest;
+import com.katru.api.resource.request.RegisterUserRequest;
 
 @Service
 public class UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
-    public UserService(UserRepository userRepository) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public User findById (Long idUser){
@@ -35,13 +40,22 @@ public class UserService {
         return userRepository.findByName(name, pr);
     }
 
-    public void createUser (CreateUserRequest createUserRequest) {
-        User user = new User(createUserRequest.cpf(),createUserRequest.email(),createUserRequest.name(),createUserRequest.password());
-
+    public void registerUser (RegisterUserRequest registerUserRequest) {
         // TODO: check if user can be created. Already exists? Has any invalid value?
+        var user = User.builder()
+            .cpf(registerUserRequest.cpf())
+            .name(registerUserRequest.name())
+            .email(registerUserRequest.email())
+            .phoneNumber(registerUserRequest.phone_number())
+            .active(true)
+            .userName(registerUserRequest.user_name())
+            .password(passwordEncoder.encode(registerUserRequest.password()))
+            .roles(registerUserRequest.roles())
+            .dtCreation(LocalDateTime.now())
+            .build();
         userRepository.save(user);
-
-    }
+        }
+   
 
 }
 
