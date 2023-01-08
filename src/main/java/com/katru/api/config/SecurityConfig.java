@@ -39,7 +39,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("/token","/api/users/teste")
+                .requestMatchers("/token","/api/users/register", "/api/home/*")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
